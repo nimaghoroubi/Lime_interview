@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Lime_interview\\TimeSuggestAPI\\TimeSuggestAPI\\TimeSuggestAPI.csproj",
-      "projectName": "TimeSuggestAPI",
-      "projectPath": "D:\\Projects\\Lime_interview\\TimeSuggestAPI\\TimeSuggestAPI\\TimeSuggestAPI.csproj",
+      "projectUniqueName": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\Supermarket.API.csproj",
+      "projectName": "Supermarket.API",
+      "projectPath": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\Supermarket.API.csproj",
       "packagesPath": "C:\\Users\\Nimag\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Lime_interview\\TimeSuggestAPI\\TimeSuggestAPI\\obj\\",
+      "outputPath": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nimag\\AppData\\Roaming\\NuGet\\NuGet.Config",

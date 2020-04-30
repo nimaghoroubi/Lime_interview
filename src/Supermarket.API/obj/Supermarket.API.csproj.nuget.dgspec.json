@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Lime_interview\\TimeSuggestAPI_Test\\TimeSuggestTest\\TimeSuggestTest.csproj": {}
+    "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\Supermarket.API.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Lime_interview\\TimeSuggestAPI_Test\\TimeSuggestTest\\TimeSuggestTest.csproj": {
+    "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\Supermarket.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Lime_interview\\TimeSuggestAPI_Test\\TimeSuggestTest\\TimeSuggestTest.csproj",
-        "projectName": "TimeSuggestTest",
-        "projectPath": "D:\\Projects\\Lime_interview\\TimeSuggestAPI_Test\\TimeSuggestTest\\TimeSuggestTest.csproj",
+        "projectUniqueName": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\Supermarket.API.csproj",
+        "projectName": "Supermarket.API",
+        "projectPath": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\Supermarket.API.csproj",
         "packagesPath": "C:\\Users\\Nimag\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Lime_interview\\TimeSuggestAPI_Test\\TimeSuggestTest\\obj\\",
+        "outputPath": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nimag\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,24 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "Microsoft.NET.Test.Sdk": {
-              "target": "Package",
-              "version": "[16.5.0, )"
-            },
-            "coverlet.collector": {
-              "target": "Package",
-              "version": "[1.2.0, )"
-            },
-            "xunit": {
-              "target": "Package",
-              "version": "[2.4.0, )"
-            },
-            "xunit.runner.visualstudio": {
-              "target": "Package",
-              "version": "[2.4.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -66,6 +48,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

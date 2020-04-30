@@ -1,6 +1,6 @@
 using System;
 
-namespace TimeSuggestAPI
+namespace Supermarket.API
 {
     public class WeatherForecast
     {

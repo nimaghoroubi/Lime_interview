@@ -1,68 +1,56 @@
-﻿using Supermarket.API.Domain.Models;
+﻿using Microsoft.Extensions.Configuration.CommandLine;
+using Supermarket.API.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Supermarket.API.Persistence.DbFromText
 {
     public class UsersList
     {
-        readonly static Employee employee1 = new Employee
+        public static List<string> ReadTextFile()
         {
-            EmployeeIdString = "11111111",
-            EmployeeName = "Jack Daniels"
-        };
+            List<string> list = new List<string>();
+            var filestream = new FileStream(@"freebusy.txt", FileMode.Open, FileAccess.Read);
+            using (var streamReader = new StreamReader(filestream, Encoding.UTF8))
+            {
+                string line;
+                while((line = streamReader.ReadLine()) != null)
+                {
+                    list.Add(line);
+                }
+            }
+            filestream.Close();
+            return list;
+        }
 
-        readonly static Employee employee2 = new Employee
+        public (Employee employeeRecord, BusyTime busytimeRecord) EmployeeFromText(string record)
         {
-            EmployeeIdString = "11111111",
-            EmployeeName = "Jack Daniels"
-        };
+            Employee EmployeeRecord = new Employee();
+            BusyTime BusyTimeRecord = new BusyTime();
 
-        readonly static Employee employee3 = new Employee
-        {
-            EmployeeIdString = "11111112",
-            EmployeeName = "Jack Daniels"
-        };
+            string[] subRecords = record.Split(';');
+            if(subRecords.Length > 3)
+            {
+                EmployeeRecord.EmployeeIdString = subRecords[0];
+                EmployeeRecord.Token = subRecords[3];
 
-        readonly static Employee employee4 = new Employee
-        {
-            EmployeeIdString = "11111113",
-            EmployeeName = "Jack Daniels"
-        };
-
-        readonly static BusyTime busytime1 = new BusyTime
-        {
-            EmployeeIdString = "11111111",
-            EmployeeMeetingStart = DateTime.Parse("05/29/2015 5:00 AM"),
-            EmployeeMeetingEnd = DateTime.Parse("05/29/2015 6:0 AM")
-        };
-
-        readonly static BusyTime busytime2 = new BusyTime
-        {
-            EmployeeIdString = "11111111",
-            EmployeeMeetingStart = DateTime.Parse("05/29/2015 7:00 AM"),
-            EmployeeMeetingEnd = DateTime.Parse("05/29/2015 6:0 AM")
-        };
+                BusyTimeRecord.EmployeeIdString = subRecords[0];
+                BusyTimeRecord.EmployeeMeetingStart = DateTime.Parse(subRecords[1]);
+                BusyTimeRecord.EmployeeMeetingEnd = DateTime.Parse(subRecords[2]);
+                return (employeeRecord: EmployeeRecord, busytimeRecord: BusyTimeRecord);
+            } else
+            {
+                return (null, null);
+            }
+            
+        }
 
         static List<Employee> NewEmployees = new List<Employee>();
         static List<BusyTime> NewTimes = new List<BusyTime>();
-        public static List<Employee> AddAllEmployees()
-        {
-            NewEmployees.Add(employee1);
-            NewEmployees.Add(employee2);
-            NewEmployees.Add(employee3);
-            NewEmployees.Add(employee4);
-
-            return NewEmployees;
-        }        
-        public static List<BusyTime> AddAllBusyTimes()
-        {
-            NewTimes.Add(busytime1);
-            NewTimes.Add(busytime2);
-
-            return NewTimes;
-        }
+        
     }
 }

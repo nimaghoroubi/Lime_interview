@@ -6,6 +6,6 @@ namespace Supermarket.API.Domain.Repositories
 {
     public interface IEmployeeRepository
     {
-        Task<IEnumerable<Employee>> ListAsync();
+        Task<Dictionary<string, string>> AvailabilityAsync();
     }
 }

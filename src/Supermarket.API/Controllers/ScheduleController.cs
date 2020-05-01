@@ -9,23 +9,28 @@ using Supermarket.API.Resources;
 namespace Supermarket.API.Controllers
 {
     [Route("/api/[controller]")]
-    public class CategoriesController : Controller
+    public class ScheduleController : Controller
     {
         private readonly IEmployeeService _employeeService;
         private readonly IMapper _mapper;
 
-        public CategoriesController(IEmployeeService employeeService, IMapper mapper)
+        public ScheduleController(IEmployeeService employeeService, IMapper mapper)
         {
             _employeeService = employeeService;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public List<string> IsEmployeeAvailable()
+        public Dictionary<string, string> IsEmployeeAvailable()
         {
-            List<string> returnValue = new List<string>();
-            returnValue.Add(Request.Query["page"]);
-            returnValue.Add(Request.Query["time"]);
+            Dictionary<string, string> returnValue = new Dictionary<string, string>();
+            returnValue.Add("user(s)", Request.Query["user"]);
+            returnValue.Add("Meeting Length", Request.Query["length"]);
+            returnValue.Add("Earliest Meeting date and time", Request.Query["earliest"]);
+            returnValue.Add("Latest Meeting date and time", Request.Query["latest"]);
+            returnValue.Add("office hours", Request.Query["officehour"]);
+
+            //call to the AvailabilityAsync here...
 
             return returnValue;
         }

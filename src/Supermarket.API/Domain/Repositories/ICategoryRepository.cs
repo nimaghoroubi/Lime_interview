@@ -4,8 +4,8 @@ using Supermarket.API.Domain.Models;
 
 namespace Supermarket.API.Domain.Repositories
 {
-    public interface ICategoryRepository
+    public interface IEmployeeRepository
     {
-        Task<IEnumerable<Category>> ListAsync();
+        Task<IEnumerable<Employee>> ListAsync();
     }
 }

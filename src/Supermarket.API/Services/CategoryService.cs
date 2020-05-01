@@ -8,14 +8,14 @@ namespace Supermarket.API.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly IEmployeeRepository _categoryRepository;
 
-        public CategoryService(ICategoryRepository categoryRepository)
+        public CategoryService(IEmployeeRepository categoryRepository)
         {
             this._categoryRepository = categoryRepository;
         }
 
-        public async Task<IEnumerable<Category>> ListAsync()
+        public async Task<IEnumerable<Employee>> ListAsync()
         {
             return await _categoryRepository.ListAsync();
         }

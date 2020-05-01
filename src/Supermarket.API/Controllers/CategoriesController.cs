@@ -24,7 +24,7 @@ namespace Supermarket.API.Controllers
         public async Task<IEnumerable<CategoryResource>> GetAllAsync()
         {
             var categories = await _categoryService.ListAsync();
-            var resources = _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryResource>>(categories);
+            var resources = _mapper.Map<IEnumerable<Employee>, IEnumerable<CategoryResource>>(categories);
 
             return resources;
         }

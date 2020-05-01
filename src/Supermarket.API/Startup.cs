@@ -27,6 +27,7 @@ namespace Supermarket.API
             Configuration = configuration;
         }
 
+        
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -34,11 +35,9 @@ namespace Supermarket.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddMvc(options => options.EnableEndpointRouting = false);
-            services.AddDbContext<AppDbContext>(options => {
-                options.UseInMemoryDatabase("supermarket-api-in-memory");
-            });
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(@"Data Source=(LocalDb)\Lime;Initial Catalog=LimeCRM;Integrated Security=SSPI;"));
 
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddAutoMapper(typeof(Startup));
         }

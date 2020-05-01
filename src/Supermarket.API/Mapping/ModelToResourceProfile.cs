@@ -8,7 +8,7 @@ namespace Supermarket.API.Mapping
     {
         public ModelToResourceProfile()
         {
-            CreateMap<Category, CategoryResource>();
+            CreateMap<Employee, CategoryResource>();
         }
 
     }

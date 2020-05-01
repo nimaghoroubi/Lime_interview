@@ -7,16 +7,16 @@ using Supermarket.API.Domain.Persistence.Contexts;
 
 namespace Supermarket.API.Persistence.Repositories
 {
-    public class CategoryRepository : BaseRepository, ICategoryRepository
+    public class EmployeeRepository : BaseRepository, IEmployeeRepository
     {
-        public CategoryRepository(AppDbContext context) : base(context)
+        public EmployeeRepository(AppDbContext context) : base(context)
         {
 
         }
 
-        public async Task<IEnumerable<Category>> ListAsync()
+        public async Task<IEnumerable<Employee>> ListAsync()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Employee.ToListAsync();
         }
     }
 }

@@ -1,37 +1,79 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Supermarket.API.Domain.Models;
+using System;
+using System.IO;
 
 namespace Supermarket.API.Domain.Persistence.Contexts
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Category> Categories { set; get; }
-        public DbSet<Product> Products { set; get; }
+        public DbSet<Employee> Employee { set; get; }
+        public DbSet<BusyTime> BusyTimes { set; get; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base() { }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                
+                var connectionString = @"Data Source=(LocalDb)\Lime;Initial Catalog=LimeCRM;Integrated Security=SSPI;";
+                optionsBuilder.UseSqlServer(connectionString);
+            }
+        }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Category>().ToTable("Categories");
-            builder.Entity<Category>().HasKey(p => p.Id);
-            builder.Entity<Category>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Category>().Property(p => p.Name).IsRequired().HasMaxLength(30);
-            builder.Entity<Category>().HasMany(p => p.Products).WithOne(p => p.Category).HasForeignKey(p => p.CategoryId);
+            builder.Entity<Employee>().HasKey(p => p.EmployeeIdString);
+            builder.Entity<Employee>().ToTable("Employee");
+            builder.Entity<Employee>().Property(p => p.EmployeeName).IsRequired();
+            builder.Entity<Employee>().HasMany(p => p.BusyTimes).WithOne(p => p.Employee).HasForeignKey(p => p.EmployeeIdString);
 
-            builder.Entity<Category>().HasData
+            builder.Entity<Employee>().HasData
                 (
-                    new Category { Id = 100, Name = "Fruits and Vegetables" }, // Id set manually due to in-memory provider
-                    new Category { Id = 101, Name = "Dairy" }
+                    new Employee { Id = 1, EmployeeIdString = "11111111",
+                        EmployeeName = "Jack Daniels" }, // Id set manually due to in-memory provider
+
+                    new Employee {Id = 2, EmployeeIdString = "11111112",
+                        EmployeeName = "Mike Tyson" }, // Id set manually due to in-memory provider
+                    
+                    new Employee {Id = 3, EmployeeIdString = "11111113",
+                        EmployeeName = "Mike Tyson" } // Id set manually due to in-memory provider
                 );
 
-            builder.Entity<Product>().ToTable("Products");
-            builder.Entity<Product>().HasKey(p => p.Id);
-            builder.Entity<Product>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Product>().Property(p => p.Name).IsRequired().HasMaxLength(50);
-            builder.Entity<Product>().Property(p => p.QuantityInPackage).IsRequired();
-            builder.Entity<Product>().Property(p => p.UnitOfMeasurement).IsRequired();
+            builder.Entity<BusyTime>().HasData
+                (
+                    new BusyTime {Id=1, EmployeeIdString = "11111111",
+                        EmployeeMeetingStart = DateTime.Parse("05/29/2015 5:00 AM"),
+                        EmployeeMeetingEnd = DateTime.Parse("05/29/2015 6:0 AM") }, // Id set manually due to in-memory provider
+
+                    new BusyTime {Id=2, EmployeeIdString = "11111111", 
+                        EmployeeMeetingStart = DateTime.Parse("05/29/2015 7:00 AM"), 
+                        EmployeeMeetingEnd = DateTime.Parse("05/29/2015 8:0 AM") }, // Id set manually due to in-memory provider
+
+                    new BusyTime {Id=3, EmployeeIdString = "11111112", 
+                        EmployeeMeetingStart = DateTime.Parse("05/29/2015 7:00 AM"), 
+                        EmployeeMeetingEnd = DateTime.Parse("05/29/2015 8:0 AM") },// Id set manually due to in-memory provider
+
+                    new BusyTime{
+                        Id = 4,
+                        EmployeeIdString = "11111113",
+                        EmployeeMeetingStart = DateTime.Parse("05/29/2015 7:00 PM"),
+                        EmployeeMeetingEnd = DateTime.Parse("05/29/2015 8:00 PM")
+                    }// Id set manually due to in-memory provider
+                );
+
+            builder.Entity<BusyTime>().ToTable("BusyTimes");
+            builder.Entity<BusyTime>().Property(p => p.EmployeeIdString);
+            builder.Entity<BusyTime>().Property(p => p.EmployeeMeetingStart).HasColumnType("smalldatetime").IsRequired();
+            builder.Entity<BusyTime>().Property(p => p.EmployeeMeetingEnd).HasColumnType("smalldatetime").IsRequired();
+            
         }
     }
 }

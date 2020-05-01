@@ -11,22 +11,31 @@ namespace Supermarket.API.Controllers
     [Route("/api/[controller]")]
     public class CategoriesController : Controller
     {
-        private readonly ICategoryService _categoryService;
+        private readonly IEmployeeService _employeeService;
         private readonly IMapper _mapper;
 
-        public CategoriesController(ICategoryService categoryService, IMapper mapper)
+        public CategoriesController(IEmployeeService employeeService, IMapper mapper)
         {
-            _categoryService = categoryService;
+            _employeeService = employeeService;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<CategoryResource>> GetAllAsync()
+        public List<string> IsEmployeeAvailable()
         {
-            var categories = await _categoryService.ListAsync();
-            var resources = _mapper.Map<IEnumerable<Employee>, IEnumerable<CategoryResource>>(categories);
+            List<string> returnValue = new List<string>();
+            returnValue.Add(Request.Query["page"]);
+            returnValue.Add(Request.Query["time"]);
 
-            return resources;
+            return returnValue;
         }
+
+        //public async Task<IEnumerable<EmployeeResource>> GetAllAsync()
+        //{
+        //    var employee = await _employeeService.ListAsync();
+        //    var resources = _mapper.Map<IEnumerable<Employee>, IEnumerable<EmployeeResource>>(employee);
+
+        //    return resources;
+        //}
     }
 }

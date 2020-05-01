@@ -38,7 +38,7 @@ namespace Supermarket.API
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(@"Data Source=(LocalDb)\Lime;Initial Catalog=LimeCRM;Integrated Security=SSPI;"));
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IEmployeeService, ScheduleService>();
             services.AddAutoMapper(typeof(Startup));
         }
 

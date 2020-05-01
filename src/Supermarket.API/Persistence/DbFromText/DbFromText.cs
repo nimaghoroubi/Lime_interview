@@ -3,6 +3,7 @@ using Supermarket.API.Domain.Persistence.Contexts;
 using Supermarket.API.Persistence.DbFromText;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,37 +22,22 @@ namespace Supermarket.API.Persistence.DbFromText
             List<Employee> Employees = new List<Employee>();
             List<BusyTime> BusyTimes = new List<BusyTime>();
 
-            foreach(string record in Records)
+            foreach (string record in Records)
             {
                 (Employee employeeRecord, BusyTime busytimeRecord) = UserManager.EmployeeFromText(record);
                 Employees.Add(employeeRecord);
                 BusyTimes.Add(busytimeRecord);
             }
-
-
-            foreach(Employee employee in Employees)
+            if (!File.Exists(@"lock.txt"))
             {
-                if(employee != null)
-                {
-                    var UserInDb = _context.Employee.Where(p => p.EmployeeIdString.Contains(p.EmployeeIdString))
-                    .Select(p => p.EmployeeIdString).ToArray();
-                    if (!UserInDb.Contains(employee.EmployeeIdString))
-                    {
-                        _context.Employee.Add(employee);
-                        _context.SaveChanges();
+                Console.WriteLine("Migrating to DataBase, This can take a long time. Please wait.");
+                DataBaseWriter.WriteToDb(_context, Employees, BusyTimes);
+            }
 
-                    }
-                }
-            }
-            foreach (BusyTime busyTime in BusyTimes)
-            {
-               if(busyTime != null)
-                {
-                    _context.BusyTimes.Add(busyTime);
-                    _context.SaveChanges();
-                }
-            }
+            Console.WriteLine("Loaded previous DataBase\n\n\n");
+
         }
 
+        
     }
 }

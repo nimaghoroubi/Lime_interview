@@ -6,18 +6,18 @@ using Supermarket.API.Domain.Services;
 
 namespace Supermarket.API.Services
 {
-    public class CategoryService : ICategoryService
+    public class ScheduleService : IEmployeeService
     {
-        private readonly IEmployeeRepository _categoryRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public CategoryService(IEmployeeRepository categoryRepository)
+        public ScheduleService(IEmployeeRepository employeeRepository)
         {
-            this._categoryRepository = categoryRepository;
+            this._employeeRepository = employeeRepository;
         }
 
         public async Task<IEnumerable<Employee>> ListAsync()
         {
-            return await _categoryRepository.ListAsync();
+            return await _employeeRepository.ListAsync();
         }
     }
 }

@@ -4,7 +4,7 @@ using Supermarket.API.Domain.Models;
 
 namespace Supermarket.API.Domain.Services
 {
-    public interface ICategoryService
+    public interface IEmployeeService
     {
         Task<IEnumerable<Employee>> ListAsync();
     }

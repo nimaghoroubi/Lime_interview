@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Supermarket.API.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -14,10 +15,12 @@ namespace Supermarket.API.Persistence.queries
             _userData = userData;
         }
         
-        public async Task<Dictionary<string, string>> GetSuggestions()
+        public async Task<List<BusyTime>> GetSuggestions()
         {
-            Dictionary<string, string> test = new Dictionary<string, string>();
-            test.Add("1", "2");
+            QueryBusyTime query = new QueryBusyTime(_userData);
+            List<BusyTime> test = await query.BusyTimeDbQueryAsync();
+             
+            //test.Add("1", "2");
             return test;
         }
         

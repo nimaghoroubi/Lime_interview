@@ -22,7 +22,7 @@ namespace Supermarket.API.Controllers
         }
 
         [HttpGet]
-        public async Task<Dictionary<string, string>> IsEmployeeAvailable()
+        public async Task<List<BusyTime>> IsEmployeeAvailable()
         {
             Dictionary<string, string> returnValue = new Dictionary<string, string>();
             returnValue.Add("user(s)", Request.Query["user"]);

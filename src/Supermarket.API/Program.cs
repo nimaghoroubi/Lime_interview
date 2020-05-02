@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Supermarket.API.Domain.Models;
 using Supermarket.API.Domain.Persistence.Contexts;
+using Supermarket.API.Persistence.Contexts;
 using Supermarket.API.Persistence.DbFromText;
 
 namespace Supermarket.API
@@ -24,6 +25,10 @@ namespace Supermarket.API
             using(var scope = host.Services.CreateScope())
             using(var context = scope.ServiceProvider.GetService<AppDbContext>())
             {
+                DbScope.host = host;
+                DbScope.Context = context;
+                DbScope.Scope = scope;
+
                 context.Database.EnsureCreated();
                 DbFromText.InsertAll(context);
             }

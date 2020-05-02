@@ -38,19 +38,19 @@ saying which port and URL to use.
 
 it will look like this:
 
-**Hosting environment: Development
+Hosting environment: Development
 Content root path: D:\Projects\Lime_interview\src\Supermarket.API
 Now listening on: https://localhost:5001
 Now listening on: http://localhost:5000
-Application started. Press Ctrl+C to shut down.**
+Application started. Press Ctrl+C to shut down.
 
 From there open a browser and use this URL to test everything works (it will automatically do this also, in case it didnt, use this URL):
 
-[http://localhost:5000/api/schedule?user=57646786307395936680161735716561753784&length=30&earliest=3-13-2015 10:00 am&latest=3-13-2015 06:00 pm&officehour=08-18]
+http://localhost:5000/api/schedule?user=57646786307395936680161735716561753784&length=30&earliest=3-13-2015 10:00 am&latest=3-13-2015 06:00 pm&officehour=08-18
 
 You will get a response like this:
 
-**[
+[
     "2015-03-13T14:30:00",
     "2015-03-13T15:00:00",
     "2015-03-13T15:30:00",
@@ -58,7 +58,7 @@ You will get a response like this:
     "2015-03-13T16:30:00",
     "2015-03-13T17:00:00",
     "2015-03-13T17:30:00"
-]**
+]
 
 These are the available times in your time zone, your current pc time. If you see all these, congrats. If not, you missed a step.
 

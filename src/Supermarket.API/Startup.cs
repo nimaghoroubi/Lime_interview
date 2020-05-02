@@ -53,7 +53,7 @@ namespace Supermarket.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseRequestLocalization();
             app.UseMvc();
 
         }

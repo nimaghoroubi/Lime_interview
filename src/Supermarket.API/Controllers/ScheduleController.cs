@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Supermarket.API.Domain.Models;
 using Supermarket.API.Domain.Services;
@@ -22,22 +24,24 @@ namespace Supermarket.API.Controllers
         }
 
         [HttpGet]
-        public async Task<List<BusyTime>> IsEmployeeAvailable()
+        public async Task<List<DateTime>> IsEmployeeAvailable()
         {
-            Dictionary<string, string> returnValue = new Dictionary<string, string>();
-            returnValue.Add("user(s)", Request.Query["user"]);
-            returnValue.Add("Meeting Length", Request.Query["length"]);
-            returnValue.Add("Earliest Meeting date and time", Request.Query["earliest"]);
-            returnValue.Add("Latest Meeting date and time", Request.Query["latest"]);
-            returnValue.Add("office hours", Request.Query["officehour"]);
+            var locale = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            var culture = locale.RequestCulture.Culture;
 
-            Query query = new Query(returnValue);
+            Dictionary<string, string> QueryParameters = new Dictionary<string, string>();
+            QueryParameters.Add("user(s)", Request.Query["user"]);
+            QueryParameters.Add("Length", Request.Query["length"]);
+            QueryParameters.Add("Earliest", Request.Query["earliest"]);
+            QueryParameters.Add("Latest", Request.Query["latest"]);
+            QueryParameters.Add("Office Hours", Request.Query["officehour"]);
 
-            var returnValue2 = await query.GetSuggestions();
+            Query query = new Query(QueryParameters, culture);
 
-            //call to the AvailabilityAsync here...
+            List<DateTime> SuggestedTimes = await query.GetSuggestions();
 
-            return returnValue2;
+
+            return SuggestedTimes;
         }
 
         //public async Task<IEnumerable<EmployeeResource>> GetAllAsync()

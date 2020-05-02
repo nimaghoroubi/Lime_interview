@@ -42,7 +42,7 @@ it will look like this:
 Content root path: D:\Projects\Lime_interview\src\Supermarket.API  
 Now listening on: https://localhost:5001  
 Now listening on: http://localhost:5000  
-Application started. Press Ctrl+C to shut down.  **
+Application started. Press Ctrl+C to shut down.**
 
 From there open a browser and use this URL to test everything works (it will automatically do this also, in case it didnt, use this URL):
 

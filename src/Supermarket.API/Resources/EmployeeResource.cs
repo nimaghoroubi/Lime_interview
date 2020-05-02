@@ -2,6 +2,7 @@
 
 namespace Supermarket.API.Resources
 {
+    // a resource made for my early experiments, dont mind it, its extra
     public class EmployeeResource
     {
         public int Id { get; set; }

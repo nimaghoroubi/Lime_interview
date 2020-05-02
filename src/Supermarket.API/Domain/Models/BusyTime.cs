@@ -2,6 +2,7 @@
 
 namespace Supermarket.API.Domain.Models
 {
+    // a model for the object that models the employee's meeting times
     public class BusyTime
     {
         public int Id { set; get; }

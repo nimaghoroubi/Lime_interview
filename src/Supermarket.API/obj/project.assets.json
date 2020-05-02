@@ -5088,9 +5088,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\Supermarket.API.csproj",
-      "projectName": "Supermarket.API",
-      "projectPath": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\Supermarket.API.csproj",
+      "projectUniqueName": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\SchedulerAPI.csproj",
+      "projectName": "SchedulerAPI",
+      "projectPath": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\SchedulerAPI.csproj",
       "packagesPath": "C:\\Users\\Nimag\\.nuget\\packages\\",
       "outputPath": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\obj\\",
       "projectStyle": "PackageReference",

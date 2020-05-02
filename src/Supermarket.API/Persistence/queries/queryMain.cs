@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Supermarket.API.Persistence.queries
 {
+    // main query driver, here all functions are called and a list of available times is returned
     public class Query
     {
         Dictionary<string, string> _userData;
@@ -20,8 +21,11 @@ namespace Supermarket.API.Persistence.queries
         
         public async Task<List<DateTime>> GetSuggestions()
         {
+            // a query is made to db
             QueryBusyTime query = new QueryBusyTime(_userData, _cultureInfo);
+            // time where employee is busy is returned
             List<BusyTime> BusyTimeList = await query.BusyTimeDbQueryAsync();
+            // available times are returned based on busy times and requested meeting time
             List<DateTime> AvailableTimes = GetAvailableTimes.GetAll(BusyTimeList, _userData, _cultureInfo);
             
             return AvailableTimes; // list of datetimes

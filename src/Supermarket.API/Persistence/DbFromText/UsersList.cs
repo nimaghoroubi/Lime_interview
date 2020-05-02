@@ -11,6 +11,7 @@ namespace Supermarket.API.Persistence.DbFromText
 {
     public class UsersList
     {
+        // file handling part of reading the txt file of records.
         public static List<string> ReadTextFile()
         {
             List<string> list = new List<string>();
@@ -18,6 +19,7 @@ namespace Supermarket.API.Persistence.DbFromText
             using (var streamReader = new StreamReader(filestream, Encoding.UTF8))
             {
                 string line;
+                // reading line by line and stopping at the end of file (null return)
                 while((line = streamReader.ReadLine()) != null)
                 {
                     list.Add(line);
@@ -32,6 +34,8 @@ namespace Supermarket.API.Persistence.DbFromText
             Employee EmployeeRecord = new Employee();
             BusyTime BusyTimeRecord = new BusyTime();
 
+            // spliting each line by the divider ";" and if there is less than 3 records, its a faulty record
+            // and we will skip it as it does not contain all the timings we need
             string[] subRecords = record.Split(';');
             if(subRecords.Length > 3)
             {
@@ -49,6 +53,7 @@ namespace Supermarket.API.Persistence.DbFromText
             
         }
 
+        // skip this, part of initial experiment
         static List<Employee> NewEmployees = new List<Employee>();
         static List<BusyTime> NewTimes = new List<BusyTime>();
         

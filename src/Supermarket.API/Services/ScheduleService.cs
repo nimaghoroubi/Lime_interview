@@ -6,6 +6,7 @@ using Supermarket.API.Domain.Services;
 
 namespace Supermarket.API.Services
 {
+    // dont mind this, not really related to anything, part of my early experiments (too afraid to delete :D )
     public class ScheduleService : IEmployeeService
     {
         private readonly IEmployeeRepository _employeeRepository;

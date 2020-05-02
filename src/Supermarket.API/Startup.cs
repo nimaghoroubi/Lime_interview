@@ -30,11 +30,15 @@ namespace Supermarket.API
         
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method gets called by the runtime to configure all the services
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddMvc(options => options.EnableEndpointRouting = false);
+            // this method adds the DB connection string to make connection, before this, make a localdb named LimeCRM
+            // after that step everything is automated, if there is no lock.txt file in root the code will read freebusy.txt
+            // and populate the database with it, it takes 5 minutes-ish on a 8th gen i5 so be patiend my friend!
+
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(@"Data Source=(LocalDb)\Lime;Initial Catalog=LimeCRM;Integrated Security=SSPI;"));
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
@@ -53,6 +57,8 @@ namespace Supermarket.API
             }
 
             app.UseHttpsRedirection();
+            // this line down here requests local info (culture info) from the api end-user browser, to convert the 
+            // values to UTC to be compared to db, db is in UTC
             app.UseRequestLocalization();
             app.UseMvc();
 

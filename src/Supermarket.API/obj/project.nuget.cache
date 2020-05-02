@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PBoXSI+kBZFEUwJb7r/f6A4QLE8av1MI37N9rUfeFYRlfRx5VytaWVzooGUwtZt49yxuoGxuO/nzLCSqngzguQ==",
+  "dgSpecHash": "XmWvYWZFLlG0aci3DSyrLTafUSBi84jbPxg9SfwUArnLi5i7WR6jQQcBrJbdzlf31h5+K2tXTbXORw3nCjQBgg==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\Supermarket.API.csproj",
+  "projectFilePath": "D:\\Projects\\Lime_interview\\src\\Supermarket.API\\SchedulerAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nimag\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Nimag\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

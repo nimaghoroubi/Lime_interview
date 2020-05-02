@@ -29,11 +29,15 @@ namespace Supermarket.API.Persistence.DbFromText
                 Employees.Add(employeeRecord);
                 BusyTimes.Add(busytimeRecord);
             }
+            // if the lock.txt exists it will read from db, if not it will populate db, create a lock to prevent 
+            // rewriting and continues with the db
             if (!File.Exists(@"lock.txt"))
             {
                 Console.WriteLine("Migrating to DataBase, This can take a long time. Please wait.");
                 // the lists are written into the db with this function
                 DataBaseWriter.WriteToDb(_context, Employees, BusyTimes);
+                // create the lock file
+                StreamWriter sw = File.CreateText(@"lock.txt"); 
             }
 
             Console.WriteLine("Loaded previous DataBase\n\n\n");

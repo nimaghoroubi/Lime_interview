@@ -35,7 +35,7 @@ namespace Supermarket.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddMvc(options => options.EnableEndpointRouting = false);
-            // this method adds the DB connection string to make connection, before this, make a localdb named LimeCRM
+            // this method adds the DB connection string to make connection, before this, make a localdb named lime
             // after that step everything is automated, if there is no lock.txt file in root the code will read freebusy.txt
             // and populate the database with it, it takes 5 minutes-ish on a 8th gen i5 so be patiend my friend!
 

@@ -7,7 +7,7 @@ HI!
 **First**
 
 ********************************************************************************************************
-there is a lock.txt in root folder of this projcet, if this is the first time you run this
+there is a lock.txt in root folder of this project, if this is the first time you run this
 just go delete that, if that file exists, your database will not be populated with record of employees
 after you delted that, go ahead and continue below
 ********************************************************************************************************
@@ -31,7 +31,7 @@ DONE? good.
 ok, now open "Program.cs" and run the program, the API now initializes, connects to database, 
 populates it, and launches 2 things. First thing a cmd window which sais this :
 
-"Migrating to DataBase, This can take a long time. Please wait."
+**"Migrating to DataBase, This can take a long time. Please wait."**
 
 If you are seeing this, good, wait 6 minutes no joke, it is a lot of data. When its done you will see a few more texts
 saying which port and URL to use. 

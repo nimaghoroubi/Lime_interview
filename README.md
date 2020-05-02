@@ -6,7 +6,7 @@ HI!
 
 Well easy to run
 
-******************************************* NOTE THIS **************************************************
+********************************************************************************************************
 there is a lock.txt in root folder of this projcet, if this is the first time you run this
 just go delete that, if that file exists, your database will not be populated with record of employees
 after you delted that, go ahead and continue below

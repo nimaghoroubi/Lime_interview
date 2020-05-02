@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Supermarket.API",
+    "\\src\\Supermarket.API\\Domain\\Repositories",
+    "\\src\\Supermarket.API\\Domain\\Services",
+    "\\src\\Supermarket.API\\Persistence\\Contexts",
+    "\\src\\Supermarket.API\\Persistence\\Repositories"
+  ],
+  "SelectedNode": "\\src",
+  "PreviewInSolutionExplorer": false
+}

@@ -9,7 +9,7 @@ HI!
 ********************************************************************************************************
 there is a lock.txt in root folder of this project, if this is the first time you run this
 just go delete that, if that file exists, your database will not be populated with record of employees
-after you delted that, go ahead and continue below
+after you deleted that, go ahead and continue below
 ********************************************************************************************************
 
 
@@ -24,12 +24,13 @@ you will get this:
 **LocalDB instance "lime" created with version 13.1.4001.0.  
 LocalDB instance "lime" started.**
 
+If you did not get that, you need to install **Microsoft SQL Server**. 
 
 DONE? good.
 
 
 ok, now open "Program.cs" and run the program, the API now initializes, connects to database, 
-populates it, and launches 2 things. First thing a cmd window which sais this :
+populates it, and launches 2 things, a cmd window, and later a browser. First thing a cmd window which sais this :
 
 **"Migrating to DataBase, This can take a long time. Please wait."**
 

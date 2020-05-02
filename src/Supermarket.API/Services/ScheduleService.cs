@@ -15,9 +15,9 @@ namespace Supermarket.API.Services
             this._employeeRepository = employeeRepository;
         }
 
-        public async Task<Dictionary<string, string>> AvailabilityAsync()
+        public async Task<IEnumerable<Employee>> ListAsync()
         {
-            return await _employeeRepository.AvailabilityAsync();
+            return await _employeeRepository.ListAsync();
         }
     }
 }

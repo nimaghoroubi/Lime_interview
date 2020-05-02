@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Supermarket.API.Domain.Models;
 using Supermarket.API.Domain.Services;
+using Supermarket.API.Persistence.queries;
 using Supermarket.API.Resources;
 
 namespace Supermarket.API.Controllers
@@ -21,7 +22,7 @@ namespace Supermarket.API.Controllers
         }
 
         [HttpGet]
-        public Dictionary<string, string> IsEmployeeAvailable()
+        public async Task<Dictionary<string, string>> IsEmployeeAvailable()
         {
             Dictionary<string, string> returnValue = new Dictionary<string, string>();
             returnValue.Add("user(s)", Request.Query["user"]);
@@ -30,9 +31,13 @@ namespace Supermarket.API.Controllers
             returnValue.Add("Latest Meeting date and time", Request.Query["latest"]);
             returnValue.Add("office hours", Request.Query["officehour"]);
 
+            Query query = new Query(returnValue);
+
+            var returnValue2 = await query.GetSuggestions();
+
             //call to the AvailabilityAsync here...
 
-            return returnValue;
+            return returnValue2;
         }
 
         //public async Task<IEnumerable<EmployeeResource>> GetAllAsync()

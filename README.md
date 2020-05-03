@@ -40,7 +40,7 @@ saying which port and URL to use.
 it will look like this:
 
 **Hosting environment: Development  
-Content root path: D:\Projects\Lime_interview\src\Supermarket.API  
+Content root path: D:\Projects\Lime_interview\src\Scheduler.API  
 Now listening on: https://localhost:5001  
 Now listening on: http://localhost:5000  
 Application started. Press Ctrl+C to shut down.**

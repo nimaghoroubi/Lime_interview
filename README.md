@@ -62,5 +62,8 @@ You will get a response like this:
 ]**
 
 These are the available times in your time zone, your current pc time. If you see all these, congrats. If not, you missed a step.
+In the link, after schedule?user="id" is the user id, you can have as many as you want like this :
+schedule?user=1&user=2  
+length is meeting length in minutes, earlierst and latest are date and time, look at your taskbar and use the same pattern, the API will read your OS configuration and parse it based on that to UTC. officehour=8-18 sais when office hour starts and ends. Please use the same format as this to get correct results. Preferably use Postman to test the API.
 
 Have fun!
